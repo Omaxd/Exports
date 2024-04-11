@@ -12,5 +12,5 @@ W tym miejscu znajduje się również definicja kontenera IoC oraz wstrzykiwanie
 
 By włączyć aplikację w trybie testu w Program.cs w projekcie DesktopView należy zmienić drugi parametr na false w 23 linijce.
 By włączyć aplikację w trybie bazodanowym:
--trzeba stworzyć 3 tabele oraz zapełnić je. Można do tego użyć skryptu CreateAndFillTables.sql z tego repozytorium,
+-trzeba stworzyć 3 tabele oraz zapełnić je. Można do tego użyć skryptu CreateAndFillTables.sql z tego repozytorium. Skrypt jest jednorazowego użycia (nie ma opcji drop),
 -zaktualizować plik konfiguracyjny App.config w projekcie DesktopView. Należy odpowiednio zmodyfikować connectionString dla wartości "local".
