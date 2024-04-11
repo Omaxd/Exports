@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MsSqlDatabase.Repositories
 {
@@ -59,9 +60,12 @@ namespace MsSqlDatabase.Repositories
                         result.Add(export);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-
+                    MessageBox.Show(
+                        "Problem z pobraniem tabeli Export z bazy danych",
+                        "Błąd",
+                        MessageBoxButtons.OK);
                 }
             }
 

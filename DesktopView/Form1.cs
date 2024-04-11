@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Linq;
+using System.Windows.Forms;
 using ViewLogic.Interfaces;
 
 namespace DXApplication2
@@ -62,7 +63,7 @@ namespace DXApplication2
                 .Take(_pageSize)
                 .ToArray();
 
-            sbPrevious.Enabled = _currentPage != 1;
+            sbPrevious.Enabled = _currentPage != 1 && _exports.Length != 0;
             sbNext.Enabled = _maxPage != 1 && _currentPage != _maxPage;
 
             lcPage.Text = $"Strona {_currentPage} z {_maxPage}";
@@ -72,6 +73,17 @@ namespace DXApplication2
         {
             var dateFrom = (DateTime)deDateFrom.EditValue;
             var dateTo = (DateTime)deDateTo.EditValue;
+
+            if (dateFrom > dateTo)
+            {
+                MessageBox.Show(
+                    "Zły zakres dat -> Data z pola 'Od' powinna być mniejsza niż data 'Do'", 
+                    "Błąd", 
+                    MessageBoxButtons.OK);
+
+                return;
+            }
+
             var checkedPlace = (Place)cbePlaces.EditValue;
 
             _exports = _exportRaportController.GetExports(dateFrom, dateTo, checkedPlace.Id);

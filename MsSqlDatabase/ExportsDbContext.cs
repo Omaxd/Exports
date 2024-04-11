@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Windows.Forms;
 
 namespace MsSqlDatabase
 {
@@ -13,8 +14,14 @@ namespace MsSqlDatabase
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["local"].ConnectionString;
             }
-            catch (Exception e) 
+            catch (Exception) 
             {
+                MessageBox.Show(
+                    "Zły connectionString -> sprawdź App.config w DesktopView",
+                    "Błąd krytyczny",
+                    MessageBoxButtons.OK);
+
+                Application.Exit();
             }
         }
     }

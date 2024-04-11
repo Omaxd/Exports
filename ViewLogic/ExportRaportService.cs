@@ -21,7 +21,7 @@ namespace ViewLogic
 
         public Place[] GetPlaces()
         {
-            return (Place[])_placesRepository
+            return _placesRepository
                 .GetAll()
                 .OrderBy(p => p.Name)
                 .ToArray();
@@ -29,7 +29,7 @@ namespace ViewLogic
 
         public Export[] GetExports(DateTime dateFrom, DateTime dateTo, int placeId)
         {
-            return (Export[])_exportRepository
+            return _exportRepository
                 .GetBetweenDatesForSelectedLocation(dateFrom, dateTo, placeId)
                 .OrderBy(p => p.Name)
                 .ToArray();

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MsSqlDatabase.Repositories
 {
@@ -38,9 +39,12 @@ namespace MsSqlDatabase.Repositories
                         result.Add(place);
                     }
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
-
+                    MessageBox.Show(
+                        "Problem z pobraniem tabeli Place z bazy danych",
+                        "Błąd",
+                        MessageBoxButtons.OK);
                 }
             }
 
